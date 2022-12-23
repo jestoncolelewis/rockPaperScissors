@@ -2,10 +2,7 @@ let choices = ['rock','paper','scissors'];
 let playerWins = 0;
 let computerWins = 0;
 
-function playerChoice() {
-    let playerSelection =  prompt('Choose Rock, Paper or Scissors', '')
-    playerSelection = playerSelection.toLowerCase('');
-
+function playerChoice(playerSelection) {
     if (playerSelection === choices[0]) {
         console.log('You played Rock');
         return choices[0];
@@ -49,9 +46,13 @@ function round(playerChoice, computerChoice) {
             break
         }};
 
-while (playerWins < 5 && computerWins < 5) {
-    round(playerChoice(), computerChoice());
-    console.log(`You have ${playerWins} points and the computer has ${computerWins} points.`);
-};
+// playerChoice using buttons
+const buttons = document.querySelectorAll('button');
 
-console.log(`Good game! Refresh to play again!`);
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerChoice(button.id);
+        computerChoice();
+        round(playerChoice, computerChoice);
+    });
+});
