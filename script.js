@@ -46,6 +46,8 @@ function round(playerChoice, computerChoice) {
             break
         }};
 
+
+        
 // playerChoice using buttons
 const buttons = document.querySelectorAll('button');
 
