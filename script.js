@@ -31,12 +31,29 @@ function computerChoice() {
     }
 };
 
+const body = document.querySelector('body');
+
 // result nodes
 const results = document.querySelector('#results');
 const winner = document.createElement('h3');
 function removeResults() {
     results.removeChild(winner);
-}
+};
+
+// player win count node
+const playerw = document.querySelector('#playerw');
+const ppoints = document.createElement('p');
+
+// computer win count node
+const compw = document.querySelector('#compw');
+const cpoints = document.createElement('p');
+
+// playerChoice using buttons
+const buttons = document.querySelectorAll('#buttons');
+
+// reset button
+const reset = document.createElement('button');
+
 
 function round(playerChoice, computerChoice) {
     switch (true) {
@@ -75,24 +92,15 @@ function checkWinner(pw, cw, pc, cc) {
     if (pw === 5) {
         winner.textContent = 'You win the game!';
         results.appendChild(winner);
+        buttons.appendChild(results, reset);
     } else if (cw === 5) {
         winner.textContent = 'Computer wins the game!'
         results.appendChild(winner);
+        buttons.appendChild(results, reset);
     } else {
         round(pc, cc);
     }
 };
-
-// player win count node
-const playerw = document.querySelector('#playerw');
-const ppoints = document.createElement('p');
-
-// computer win count node
-const compw = document.querySelector('#compw');
-const cpoints = document.createElement('p');
-
-// playerChoice using buttons
-const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
