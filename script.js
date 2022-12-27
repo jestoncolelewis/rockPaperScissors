@@ -71,6 +71,18 @@ function round(playerChoice, computerChoice) {
     }
 };
 
+function checkWinner(pw, cw, pc, cc) {
+    if (pw === 5) {
+        winner.textContent = 'You win the game!';
+        results.appendChild(winner);
+    } else if (cw === 5) {
+        winner.textContent = 'Computer wins the game!'
+        results.appendChild(winner);
+    } else {
+        round(pc, cc);
+    }
+};
+
 // player win count node
 const playerw = document.querySelector('#playerw');
 const ppoints = document.createElement('p');
@@ -84,7 +96,7 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        round(playerChoice(button.id), computerChoice());
+        checkWinner(playerWins, computerWins, playerChoice(button.id), computerChoice());
 
         ppoints.textContent = playerWins;
         playerw.appendChild(ppoints);
