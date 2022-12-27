@@ -31,8 +31,6 @@ function computerChoice() {
     }
 };
 
-const body = document.querySelector('body');
-
 // result nodes
 const results = document.querySelector('#results');
 const winner = document.createElement('h3');
@@ -49,10 +47,13 @@ const compw = document.querySelector('#compw');
 const cpoints = document.createElement('p');
 
 // playerChoice using buttons
-const buttons = document.querySelectorAll('#buttons');
+const buttons = document.querySelectorAll('button');
 
 // reset button
+const buttonsNode = document.querySelector('#buttons')
 const reset = document.createElement('button');
+reset.textContent = 'Reset';
+reset.addEventListener('click', () => {document.location.reload();});
 
 
 function round(playerChoice, computerChoice) {
@@ -92,11 +93,11 @@ function checkWinner(pw, cw, pc, cc) {
     if (pw === 5) {
         winner.textContent = 'You win the game!';
         results.appendChild(winner);
-        buttons.appendChild(results, reset);
+        buttonsNode.appendChild(reset);
     } else if (cw === 5) {
         winner.textContent = 'Computer wins the game!'
         results.appendChild(winner);
-        buttons.appendChild(results, reset);
+        buttonsNode.appendChild(reset);
     } else {
         round(pc, cc);
     }
